@@ -1,10 +1,10 @@
 #Greenfoot project file
 class.MyWorld.image=Start_screen_background.png
 class.Start_Button.image=button-red.png
-editor.fx.0.height=728
-editor.fx.0.width=800
-editor.fx.0.x=335
-editor.fx.0.y=77
+editor.fx.0.height=920
+editor.fx.0.width=1470
+editor.fx.0.x=0
+editor.fx.0.y=36
 height=848
 package.numDependencies=0
 package.numTargets=2
@@ -37,7 +37,7 @@ target2.width=120
 target2.x=0
 target2.y=0
 version=3.1.0
-width=1232
+width=1251
 world.lastInstantiated=MyWorld
 xPosition=24
 yPosition=37
