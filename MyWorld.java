@@ -19,19 +19,25 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);
-        title = "SPORTING SORTING";
+        
         GreenfootImage border = new GreenfootImage("Start_screen_background.png"); 
         border.scale(1000, 601);
         setBackground(border);
-        Color colorVariable1 = new Color(1, 1,1);
-        Color colorVariable2 = new Color(2, 2,2);
-        Font ss = new Font("sport", true, false, 20);
-        GreenfootImage s = new GreenfootImage(title,20,colorVariable1,colorVariable2);
-        s.drawString("HI",50,50);
-        s.setFont(ss);
         
-        //s.toString("HI");
+        Football_Player player = new Football_Player();
+        addObject(player, getWidth() / 2, getHeight() / 2);
+
+        
+        showText("SPORTING SORTING", getWidth() / 2, getHeight() / 2 - 50);
+        showText("Press ENTER to Start", getWidth() / 2, getHeight() / 2 + 50);
+        
         
     }
     
+    /**public void act() {
+        
+        if (Greenfoot.isKeyDown("enter")) {
+            Greenfoot.setWorld(new MainGameWorld()); 
+        }
+    }**/
 }
