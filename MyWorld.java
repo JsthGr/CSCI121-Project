@@ -8,9 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    //static final Color BLACK;
-    //static final Color BLUE;
-    private String title;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -25,8 +23,12 @@ public class MyWorld extends World
         setBackground(border);
         
         Football_Player player = new Football_Player();
-        addObject(player, getWidth() / 2, getHeight() / 2);
-
+        addObject(player, getWidth()/2 , getHeight() /2);
+        player.setLocation(200,300);
+        
+        SoccerPlayer player2 = new SoccerPlayer();
+        addObject(player2, getWidth()*2 , getHeight() );
+        player2.setLocation(800,300);
         
         showText("SPORTING SORTING", getWidth() / 2, getHeight() / 2 - 50);
         showText("Press ENTER to Start", getWidth() / 2, getHeight() / 2 + 50);
@@ -34,10 +36,10 @@ public class MyWorld extends World
         
     }
     
-    /**public void act() {
+    public void act() {
         
         if (Greenfoot.isKeyDown("enter")) {
-            Greenfoot.setWorld(new MainGameWorld()); 
+            Greenfoot.setWorld(new Level2()); 
         }
-    }**/
+    }
 }
