@@ -16,6 +16,13 @@ public class Level2 extends World
     public Level2()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(1000, 600, 1); 
+        GreenfootImage court = new GreenfootImage("basketball_court.png"); 
+        court.scale(1000, 601);
+        setBackground(court);
+        
+        boss boss1 = new boss();
+        addObject(boss1, getWidth()/2 , getHeight() /2);
+        boss1.setLocation(900,100);
     }
 }
