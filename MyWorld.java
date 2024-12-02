@@ -30,6 +30,14 @@ public class MyWorld extends World
         addObject(player2, getWidth()*2 , getHeight() );
         player2.setLocation(800,300);
         
+        TennisRacket ten = new TennisRacket();
+        addObject(ten, getWidth()*2 , getHeight() );
+        ten.setLocation(500,150);
+        
+        Runner run = new Runner();
+        addObject(run, getWidth()*2, getHeight());
+        run.setLocation(500,450);
+        
         showText("SPORTING SORTING", getWidth() / 2, getHeight() / 2 - 50);
         showText("Press ENTER to Start", getWidth() / 2, getHeight() / 2 + 50);
         
