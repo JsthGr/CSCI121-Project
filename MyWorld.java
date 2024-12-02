@@ -43,11 +43,11 @@ public class MyWorld extends World
         
         
     }
-    /**
+    
     public void act() {
         
         if (Greenfoot.isKeyDown("enter")) {
-            Greenfoot.setWorld(new Level2()); 
+            Greenfoot.setWorld(new Level1()); 
         }
-    }**/
+    }
 }
