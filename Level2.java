@@ -25,4 +25,10 @@ public class Level2 extends World
         addObject(boss1, getWidth()/2 , getHeight() /2);
         boss1.setLocation(900,100);
     }
+    
+    public void act(){
+        if(Greenfoot.isKeyDown("enter")) {
+           
+            }
+    }
 }
