@@ -21,5 +21,7 @@ public class Level1 extends World
         boss boss1 = new boss();
         addObject(boss1, getWidth()/2 , getHeight() /2);
         boss1.setLocation(900,100); 
+        
+        addObject(new Timer(),129,30);
     }
 }
