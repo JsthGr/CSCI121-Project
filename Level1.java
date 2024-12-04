@@ -24,4 +24,11 @@ public class Level1 extends World
         
         addObject(new Timer(),129,30);
     }
+    
+    public void act() {
+        
+        if (Greenfoot.isKeyDown("n")) {
+            Greenfoot.setWorld(new Level2()); 
+        }
+    }
 }

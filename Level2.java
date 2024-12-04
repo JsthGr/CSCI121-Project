@@ -27,7 +27,7 @@ public class Level2 extends World
     }
     
     public void act(){
-        if(Greenfoot.isKeyDown("enter")) {
+        if(Greenfoot.isKeyDown("n")) {
            
             }
     }
