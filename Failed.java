@@ -16,6 +16,7 @@ public class Failed extends World
     public Failed()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(1000, 600, 1); 
+        showText("You failed the task.", getWidth() / 2, getHeight() / 2 - 50);
     }
 }
