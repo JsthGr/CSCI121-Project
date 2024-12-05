@@ -21,13 +21,13 @@ public class Timer extends Actor
         stopwatchImage.setFont(font);
         stopwatchImage.drawString(stopWatch.toString(),0,20);
         setImage(stopwatchImage);
-        stopWatch.startStop();
-    }
-
-    public void stopped(){
-        stopWatch.startStop();
+        isRunning = false;
     }
     
+    public void start() {
+        stopWatch.startStop(); // Start the timer
+        isRunning = true;
+    }
     
     private void updateDisplay() {
         stopwatchImage.clear();
@@ -40,39 +40,16 @@ public class Timer extends Actor
      */
     public void act() 
     {
-        stopWatch.startStop();
-        if(Greenfoot.isKeyDown("a")) {
-            
-        }
-        
-        if (Greenfoot.isKeyDown("s")) {
-            if (!isRunning) {
-                stopWatch.startStop();
-                isRunning = true;
-            } else {
-                stopWatch.startStop();
-                isRunning = false;
-            }
-            Greenfoot.delay(10); // Small delay to avoid multiple triggers
-        }
-
-        // Update the display continuously if the timer is running
         if (isRunning) {
-            stopWatch.startStop(); // Update the current time
+            stopWatch.startStop(); // update current time
             updateDisplay();
         }
-            /**
-            if(Greenfoot.isKeyDown("enter")){
-                
-                while(stopWatch.elapsedTime()<100000000){ 
-                    stopWatch.startStop();
-                    stopwatchImage.clear();
-                    stopwatchImage.drawString(stopWatch.toString(), 0, 20);
-                    setImage(stopwatchImage); 
-            }
-            }
-            **/
-            
+
+        
+        if (Greenfoot.isKeyDown("s")) {
+            isRunning = !isRunning;
+            Greenfoot.delay(10); // small delay 
+        }            
             
             
         
