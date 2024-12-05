@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class MyWorld here.
  * 
@@ -17,7 +17,8 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);
-        
+        List<Actor> actors = getObjects(null);  
+        removeObjects(actors);
         GreenfootImage border = new GreenfootImage("Start_screen_background.png"); 
         border.scale(1000, 601);
         setBackground(border);
@@ -43,11 +44,11 @@ public class MyWorld extends World
         
         
     }
-    /**
+    
     public void act() {
         
         if (Greenfoot.isKeyDown("enter")) {
-            Greenfoot.setWorld(new Level2()); 
+            Greenfoot.setWorld(new Level1Intro()); 
         }
-    }**/
+    }
 }
