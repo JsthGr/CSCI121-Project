@@ -24,9 +24,10 @@ public class Level1Intro extends World {
         // Display the first piece of text
         speechBubble.setText(
             "Boss: Hey, are you here to get hired for the Assistant Equipment \n" +
-            "Manager position? For you to get hired, you first have to sort the jerseys from least to greatest\n" +
-            "to sort the jerseys from least to greatest in a short amount of time. Can you handle it?\n" +
-            "Before you start, let me explain the type of sorting method you’ll be using."
+            "Manager position? For you to get hired, you first have to sort \n" +
+            "the jerseys from least to greatest to sort the jerseys from least\n" +
+            "to greatest in a short amount of time. Before you start, \n"+
+            "let me explain the type of sorting method you’ll be using."
         );
 
         // Bottom-right text for continuing to the next stage
