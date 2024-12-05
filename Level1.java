@@ -42,7 +42,7 @@ public class Level1 extends World {
         addObject(arrow, 0, 0); // Add the arrow but place it off-screen initially
         updateArrowPosition();
         
-        showText("Press SPACE to Start", getWidth() / 2, getHeight() / 2 + 50);
+        showText("Press SPACE to Start", getWidth()/2 , getHeight()/2  + 80);
     }
     
     private ArrayList<Integer> generateRandomNumbers(int count, int min, int max) {
