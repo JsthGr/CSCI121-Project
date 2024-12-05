@@ -7,44 +7,32 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 
  */
 public class Speech extends Actor {
-    private GreenfootImage bubbleImage;
-    private GreenfootImage textImage;
-    private int bubbleWidth = 500;
-    private int bubbleHeight = 300;
-
     public Speech() {
-        bubbleImage = new GreenfootImage("speech_bubble.png");
-        bubbleImage.scale(bubbleWidth, bubbleHeight);
-        setImage(bubbleImage);
+        GreenfootImage image = new GreenfootImage("speech_bubble.png");
+        image.scale(650, 400); // Increased size of the bubble
+        setImage(image);
     }
 
     public void setText(String text) {
-        // Clear the existing text
-        textImage = new GreenfootImage(bubbleWidth - 20, bubbleHeight - 40); // Padding inside bubble
-        textImage.setFont(new Font(true, false, 18)); // Font size
-        textImage.setColor(Color.BLACK);
-        textImage.clear();
+        GreenfootImage bubbleImage = getImage(); // Get the speech bubble image
+        bubbleImage.clear(); // Clear existing image
 
-        // Wrap the text and draw it inside the speech bubble
-        String[] words = text.split(" ");
-        String line = "";
-        int y = 20; // Start drawing text from the top
-        for (String word : words) {
-            if (textImage.getFontMetrics().stringWidth(line + word) > textImage.getWidth()) {
-                textImage.drawString(line, 10, y);
-                line = word + " ";
-                y += 20; // Move to the next line
-            } else {
-                line += word + " ";
-            }
+        // Redraw the bubble background
+        GreenfootImage bubbleBackground = new GreenfootImage("speech_bubble.png");
+        bubbleBackground.scale(650, 400); // Match bubble size
+        bubbleImage.drawImage(bubbleBackground, 0, 0);
+
+        // Add the text to the bubble
+        bubbleImage.setFont(new Font(true, false, 18)); // Set font size
+        bubbleImage.setColor(Color.BLACK);
+
+        // Manually position text
+        int x = 20;
+        int y = 50; // Start below the top edge
+        for (String line : text.split("\n")) {
+            bubbleImage.drawString(line, x, y);
+            y += 25; // Move down for each line
         }
-        textImage.drawString(line, 10, y); // Draw the last line
-
-        // Overlay the text onto the speech bubble
-        bubbleImage.clear();
-        bubbleImage.drawImage(new GreenfootImage("speech_bubble.png"), 0, 0);
-        bubbleImage.scale(bubbleWidth, bubbleHeight);
-        bubbleImage.drawImage(textImage, 10, 20);
         setImage(bubbleImage);
     }
 }
