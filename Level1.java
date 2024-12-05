@@ -14,7 +14,7 @@ public class Level1 extends World {
     private YesNoButton noButton;
     private ArrayList<FootballJersey> jerseys; 
     private Arrow arrow; 
-
+    private final int TIME_LIMIT = 60;
     public Level1() {    
         super(1000, 600, 1); 
         
@@ -41,7 +41,6 @@ public class Level1 extends World {
         arrow = new Arrow();
         addObject(arrow, 0, 0); // Add the arrow but place it off-screen initially
         updateArrowPosition();
-        
         
         showText("Press SPACE to Start", getWidth() / 2, getHeight() / 2 + 50);
     }
@@ -97,32 +96,36 @@ public class Level1 extends World {
     }
 
     public void act() {
-        if (!timerAdded && Greenfoot.isKeyDown("space")) {
-            addObject(timer, 129, 30);
-            timer.start(); 
-            timerAdded = true; 
-            
-        }
+    if (!timerAdded && Greenfoot.isKeyDown("space")) {
+        addObject(timer, 129, 30);
+        timer.start(); 
+        timerAdded = true; 
+    }
 
-        if (!isSorted) {
-            if (Greenfoot.mouseClicked(yesButton)) {
-                if (numbers.get(currentIndex) > numbers.get(currentIndex + 1)) {
-                    Collections.swap(numbers, currentIndex, currentIndex + 1);
-                    nextStep();
-                }
-            } else if (Greenfoot.mouseClicked(noButton)) {
-                if (numbers.get(currentIndex) <= numbers.get(currentIndex + 1)) {
-                    nextStep();
-                }
+    // Check if the time limit has been exceeded
+    if (timerAdded && timer.getElapsedTimeInSeconds() > TIME_LIMIT) {
+        Greenfoot.setWorld(new Failed()); // Transition to the Failed screen
+    }
+
+    if (!isSorted) {
+        if (Greenfoot.mouseClicked(yesButton)) {
+            if (numbers.get(currentIndex) > numbers.get(currentIndex + 1)) {
+                Collections.swap(numbers, currentIndex, currentIndex + 1);
+                nextStep();
+            }
+        } else if (Greenfoot.mouseClicked(noButton)) {
+            if (numbers.get(currentIndex) <= numbers.get(currentIndex + 1)) {
+                nextStep();
             }
         }
+    }
 
-        if (isSorted) {
-            Greenfoot.setWorld(new Level2Intro());
-        }
+    if (isSorted) {
+        Greenfoot.setWorld(new Level2Intro());
+    }
 
-        if (Greenfoot.isKeyDown("n")) {
-            Greenfoot.setWorld(new Level2Intro()); 
-        }
+    if (Greenfoot.isKeyDown("n")) {
+        Greenfoot.setWorld(new Level2Intro()); 
+    }
     }
 }
