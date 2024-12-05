@@ -138,7 +138,7 @@ public class Level1 extends World {
 
         // Transition to next level
         if (Greenfoot.isKeyDown("n")) {
-            Greenfoot.setWorld(new Level2()); 
+            Greenfoot.setWorld(new Level2Intro()); 
         }
     }
 }
