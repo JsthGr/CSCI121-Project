@@ -44,16 +44,17 @@ public class Level2Intro extends World
     public void act() {
         if (textStage == 0 && Greenfoot.isKeyDown("c")){
             speechBubble.setText(
-                "Your task is still sorting but do it \n"+
-                "alphabetically this time. "
+                "Your task is still sorting but you will be \n"+
+                "sorting the stat sheet this time. This means you\n"+
+                "you will be sorting both the points and rebounds for now."
             );
 
             // Update bottom right text
             showText("Press 'L' to start Level 2.", getWidth() - 200, getHeight() - 50);
             textStage = 1;
         }
-        if (Greenfoot.isKeyDown("space")) {
-            Greenfoot.setWorld(new Level1()); 
+        if (Greenfoot.isKeyDown("l")) {
+            Greenfoot.setWorld(new Level2()); 
         }
     }
     

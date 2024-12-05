@@ -25,5 +25,14 @@ public class Failed extends World
         addObject(speechBubble, 400, 250);
         speechBubble.setText("You failed the task. Your clearly not\n"+
          "prepared to work here. Come back when you're prepared.");
+         
+         showText("Press 'r' to restart.", getWidth() - 200, getHeight() - 50);
+            
+    }
+    
+    public void act() {
+        if (Greenfoot.isKeyDown("r")) {
+            Greenfoot.setWorld(new MyWorld()); 
+        }
     }
 }
