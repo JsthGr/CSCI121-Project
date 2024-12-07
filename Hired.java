@@ -8,14 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Hired extends World
 {
-
-    /**
-     * Constructor for objects of class Hired.
-     * 
-     */
+    private Speech speechBubble;
     public Hired()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(1000, 600, 1); 
+        boss boss1 = new boss();
+        addObject(boss1, getWidth()/2 , getHeight() /2);
+        boss1.setLocation(900,100); 
+        
+        speechBubble = new Speech();
+        addObject(speechBubble, 400, 250);
+        speechBubble.setText("Congrats. You clearly have the \n"+
+         "skills to work here when can you start.");
+         
+        
+            
     }
 }

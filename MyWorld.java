@@ -50,5 +50,9 @@ public class MyWorld extends World
         if (Greenfoot.isKeyDown("enter")) {
             Greenfoot.setWorld(new Level1Intro()); 
         }
+        
+        if (Greenfoot.isKeyDown("l")) {
+            Greenfoot.setWorld(new Level2()); 
+        }
     }
 }

@@ -127,6 +127,7 @@ public class Level1 extends World {
     if (Greenfoot.isKeyDown("n")) {
         Greenfoot.setWorld(new Level2Intro()); 
     }
+    
     if (Greenfoot.isKeyDown("f")) {
         Greenfoot.setWorld(new Failed()); 
     }
