@@ -102,7 +102,7 @@ public class Level1 extends World {
         timerAdded = true; 
     }
 
-    // Check if the time limit has been exceeded
+    // Check if the time limit goes over 1 mi
     if (timerAdded && timer.getElapsedTimeInSeconds() > TIME_LIMIT) {
         Greenfoot.setWorld(new Failed()); // Transition to the Failed screen
     }

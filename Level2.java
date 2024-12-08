@@ -21,7 +21,8 @@ public class Level2 extends World
     private YesNoButton noPointButton;
     private YesNoButton yesReboundButton;
     private YesNoButton noReboundButton;
-    private ArrayList<Box> boxes; 
+    private ArrayList<Box> boxesP; 
+    private ArrayList<Box> boxesR;
     private Arrow arrowP;
     private Arrow arrowR;
     private final int TIME_LIMIT = 120;
@@ -54,6 +55,14 @@ public class Level2 extends World
         boss boss1 = new boss();
         addObject(boss1, getWidth()/2 , getHeight() /2);
         boss1.setLocation(900,100);
+        
+        arrowP = new Arrow();
+        addObject(arrowP, 0, 0); 
+        updatePointArrowPosition();
+        
+        arrowR = new Arrow();
+        addObject(arrowR, 0, 0); 
+        updateRebArrowPosition();
         
         timer = new Timer();
         
@@ -88,6 +97,20 @@ public class Level2 extends World
         return true;
     }
     
+    private void updatePointArrowPosition() {
+        if (currentIndex < boxesP.size() - 1) {
+            Box leftBox = boxesP.get(currentIndex);
+            arrowP.pointTo(leftBox.getX(), leftBox.getY());
+        }
+    }
+    
+    private void updateRebArrowPosition() {
+        if (currentIndex < boxesP.size() - 1) {
+            Box leftBox = boxesP.get(currentIndex);
+            arrowP.pointTo(leftBox.getX(), leftBox.getY());
+        }
+    }
+    
     public void act(){
         if (!timerAdded && Greenfoot.isKeyDown("space")) {
         addObject(timer, 129, 30);
@@ -96,7 +119,7 @@ public class Level2 extends World
     }
     
     if (timerAdded && timer.getElapsedTimeInSeconds() > TIME_LIMIT) {
-        Greenfoot.setWorld(new Failed()); // Transition to the Failed screen
+        Greenfoot.setWorld(new Failed()); 
     }
     
     if (isPointsSorted && isReboundsSorted) {
