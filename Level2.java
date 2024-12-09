@@ -70,6 +70,9 @@ public class Level2 extends World
         
         timer = new Timer();
         
+        showText("Points", 500, 150);
+        showText("Rebounds", 500, 350);
+        
         showText("Rebounds", getWidth() - 200, getHeight() - 50);
         showText("Points", getWidth() - 800, getHeight() - 50);
         showText("Press SPACE to Start", getWidth()/2  , getHeight()/2  -  200);
@@ -110,7 +113,7 @@ public class Level2 extends World
         for (int number : numbersr) {
             Box boxes = new Box(number);
             addObject(boxes, x, y);
-            boxesP.add(boxes);
+            boxesR.add(boxes);
             x += 90; 
         }
     }
@@ -194,7 +197,7 @@ public class Level2 extends World
         if (Greenfoot.mouseClicked(yesReboundButton)) {
             if (numbersr.get(currentIndex) > numbersr.get(currentIndex + 1)) {
                 Collections.swap(numbersr, currentIndex, currentIndex + 1);
-                //displayPointReb();
+                displayBoxReb();
                 nextRebStep();
             }
         } else if (Greenfoot.mouseClicked(noReboundButton)) {
