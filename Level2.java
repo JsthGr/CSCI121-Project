@@ -21,7 +21,8 @@ public class Level2 extends World
     private YesNoButton noPointButton;
     private YesNoButton yesReboundButton;
     private YesNoButton noReboundButton;
-    private ArrayList<Box> boxes; 
+    private ArrayList<Box> boxesP; 
+    private ArrayList<Box> boxesR;
     private Arrow arrowP;
     private Arrow arrowR;
     private final int TIME_LIMIT = 120;
@@ -51,11 +52,26 @@ public class Level2 extends World
         addObject(yesReboundButton, 700, 500);
         addObject(noReboundButton, 900, 500);
         
-        boss boss1 = new boss();
-        addObject(boss1, getWidth()/2 , getHeight() /2);
-        boss1.setLocation(900,100);
+        boxesP = new ArrayList<>();
+        displayBoxPoint();
+        
+        boxesR = new ArrayList<>();
+        displayBoxReb();
+        
+        
+        
+        arrowP = new Arrow();
+        addObject(arrowP, 0, 0); 
+        updatePointArrowPosition();
+        
+        arrowR = new Arrow();
+        addObject(arrowR, 0, 0); 
+        updateRebArrowPosition();
         
         timer = new Timer();
+        
+        showText("Points", 500, 150);
+        showText("Rebounds", 500, 350);
         
         showText("Rebounds", getWidth() - 200, getHeight() - 50);
         showText("Points", getWidth() - 800, getHeight() - 50);
@@ -68,6 +84,38 @@ public class Level2 extends World
             randomNumbers.add(Greenfoot.getRandomNumber(max - min + 1) + min);
         }
         return randomNumbers;
+    }
+    
+    private void displayBoxPoint() {
+        for (Box boxes : boxesP) {
+            removeObject(boxes);
+        }
+        boxesP.clear();
+
+        int x = 100; 
+        int y = 200; 
+        for (int number : numbersp) {
+            Box boxes = new Box(number);
+            addObject(boxes, x, y);
+            boxesP.add(boxes);
+            x += 90; 
+        }
+    }
+    
+    private void displayBoxReb() {
+        for (Box boxes : boxesR) {
+            removeObject(boxes);
+        }
+        boxesR.clear();
+
+        int x = 100; 
+        int y = 400; 
+        for (int number : numbersr) {
+            Box boxes = new Box(number);
+            addObject(boxes, x, y);
+            boxesR.add(boxes);
+            x += 90; 
+        }
     }
     
     private boolean isPointsSorted() {
@@ -88,6 +136,38 @@ public class Level2 extends World
         return true;
     }
     
+    private void nextPointStep() {
+        currentIndex++;
+        if (currentIndex >= numbersp.size() - 1) {
+            currentIndex = 0;
+            isPointsSorted = isPointsSorted();
+        }
+        updatePointArrowPosition();
+    }
+    
+    private void nextRebStep() {
+        currentIndex++;
+        if (currentIndex >= numbersr.size() - 1) {
+            currentIndex = 0;
+            isReboundsSorted = isReboundsSorted();
+        }
+        updateRebArrowPosition();
+    }
+    
+    private void updatePointArrowPosition() {
+        if (currentIndex < boxesP.size() - 1) {
+            Box leftBoxP = boxesP.get(currentIndex);
+            arrowP.pointDown(leftBoxP.getX(), leftBoxP.getY());
+        }
+    }
+    
+    private void updateRebArrowPosition() {
+        if (currentIndex < boxesR.size() - 1) {
+            Box leftBoxR = boxesR.get(currentIndex);
+            arrowR.pointDown(leftBoxR.getX(), leftBoxR.getY());
+        }
+    }
+    
     public void act(){
         if (!timerAdded && Greenfoot.isKeyDown("space")) {
         addObject(timer, 129, 30);
@@ -96,12 +176,43 @@ public class Level2 extends World
     }
     
     if (timerAdded && timer.getElapsedTimeInSeconds() > TIME_LIMIT) {
-        Greenfoot.setWorld(new Failed()); // Transition to the Failed screen
+        Greenfoot.setWorld(new Failed()); 
+    }
+    
+    if (!isPointsSorted) {
+        if (Greenfoot.mouseClicked(yesPointButton)) {
+            if (numbersp.get(currentIndex) > numbersp.get(currentIndex + 1)) {
+                Collections.swap(numbersp, currentIndex, currentIndex + 1);
+                displayBoxPoint();
+                nextPointStep();
+            }
+        } else if (Greenfoot.mouseClicked(noPointButton)) {
+            if (numbersp.get(currentIndex) <= numbersp.get(currentIndex + 1)) {
+                nextPointStep();
+            }
+        }
+    }
+    
+    if (!isReboundsSorted) {
+        if (Greenfoot.mouseClicked(yesReboundButton)) {
+            if (numbersr.get(currentIndex) > numbersr.get(currentIndex + 1)) {
+                Collections.swap(numbersr, currentIndex, currentIndex + 1);
+                displayBoxReb();
+                nextRebStep();
+            }
+        } else if (Greenfoot.mouseClicked(noReboundButton)) {
+            if (numbersr.get(currentIndex) <= numbersr.get(currentIndex + 1)) {
+                nextRebStep();
+            }
+        }
     }
     
     if (isPointsSorted && isReboundsSorted) {
         Greenfoot.setWorld(new Hired());
     }
     
+    if (Greenfoot.isKeyDown("h")) {
+        Greenfoot.setWorld(new Hired());
+    }
     }
 }

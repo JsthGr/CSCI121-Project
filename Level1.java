@@ -20,9 +20,7 @@ public class Level1 extends World {
         
         numbers = generateRandomNumbers(10, 1, 100);
         
-        boss boss1 = new boss();
-        addObject(boss1, getWidth() / 2, getHeight() / 2);
-        boss1.setLocation(900, 100); 
+         
         
         GreenfootImage stadium = new GreenfootImage("football_background.png"); 
         stadium.scale(1000, 601);
@@ -102,7 +100,7 @@ public class Level1 extends World {
         timerAdded = true; 
     }
 
-    // Check if the time limit has been exceeded
+    // Check if the time limit goes over 1 min
     if (timerAdded && timer.getElapsedTimeInSeconds() > TIME_LIMIT) {
         Greenfoot.setWorld(new Failed()); // Transition to the Failed screen
     }
