@@ -1,0 +1,42 @@
+Joseth: Coded the following files.
+Arrow.java
+Box.java
+Failed.java
+FootballJersey.java
+Football_Player.java
+Hired.java
+Level1.java
+Level1Intro.java
+Level2.java
+Level2Intro.java
+MyWorld.java
+
+Daniel: Coded the following files
+Runner.java
+SoccerPlayer.java
+Speech.java
+StopWatch.java
+TennisRacket.java
+Timer.java
+YesNoButton.java
+boss.java
+project.greenfoot
+gitattributes
+.gitignore
+
+Aryana: Helped with graphic design
+      - ideation
+      - How might we questions
+      - User stories
+      - presetation
+    
+Emmanuel: Documentation
+      - ideation
+      - How might we questions
+      - User stories
+      - presetation
+
+Jefferey: Presentation
+      - How might we questions
+      - User stories
+      - ideation
